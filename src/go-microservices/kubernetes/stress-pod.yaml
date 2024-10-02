@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: stress
+spec:
+  containers:
+    - name: alpine-stress
+      image: alpine
+      command: ["sleep", "3600"]
