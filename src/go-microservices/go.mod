@@ -1,6 +1,6 @@
 module github.com/AkshayDhumale/Go-Microservice.git
 
-go 1.22.4
+go 1.20
 
 require rsc.io/quote v1.5.2
 
