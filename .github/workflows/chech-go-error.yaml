@@ -26,4 +26,4 @@ jobs:
     - name: Build Go project
       run: |
         /src/go-microservices
-        go build -o main.go
+        go build -o main
