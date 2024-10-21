@@ -36,4 +36,4 @@ jobs:
         go mod tidy
 
     - name: Build Go project
-      run: go build -o bin/main ./src/go-microservices
+      run: go build -o main.go
