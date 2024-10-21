@@ -31,7 +31,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-go-
     - name: Install dependencies
-      run: go mod tidy
+      run: |
+        cd src/go-microservices
+        go mod tidy
 
     - name: Build Go project
       run: go build -o bin/main ./src/go-microservices
