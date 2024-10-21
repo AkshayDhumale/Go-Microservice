@@ -26,5 +26,5 @@ jobs:
     - name: Build Go project
       run: |
         cd src/go-microservices  # Navigate to the correct directory
-        go build -o main  # Build the project and output the binary as 'main'
+        go build -o main.go  # Build the project and output the binary as 'main'
 
