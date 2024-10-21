@@ -22,18 +22,8 @@ jobs:
       uses: actions/setup-go@v4
       with:
         go-version: '1.20'
-
-    - name: Cache Go modules
-      uses: actions/cache@v3
-      with:
-        path: ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
-    - name: Install dependencies
-      run: |
-        cd src/go-microservices
-        go mod tidy
-
+        
     - name: Build Go project
-      run: go build -o main.go
+      run: |
+        /src/go-microservices
+        go build -o main.go
