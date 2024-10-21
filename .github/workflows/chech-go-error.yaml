@@ -23,15 +23,8 @@ jobs:
       with:
         go-version: '1.20'
 
-    # Debug step: Print current directory and files
-    - name: Print directory structure (for debugging)
-      run: |
-        pwd
-        ls -R  # Recursively list all files to confirm directory structure
-
     - name: Build Go project
       run: |
         cd src/go-microservices  # Navigate to the correct directory
-        ls  # List files in this directory for verification
         go build -o main  # Build the project and output the binary as 'main'
 
