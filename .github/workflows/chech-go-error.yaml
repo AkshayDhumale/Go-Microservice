@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/chech-go-error.yaml
   pull_request:
     branches:
       - main
@@ -27,4 +29,5 @@ jobs:
       run: |
         cd src/go-microservices  # Navigate to the correct directory
         go build -o main.go  # Build the project and output the binary as 'main'
+        pwd && ls -ltr
 
