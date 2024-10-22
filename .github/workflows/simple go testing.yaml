@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - .github/workflows/chech-go-error.yaml
+      - .github/workflows/simple go testing.yaml
   pull_request:
     branches:
       - main
