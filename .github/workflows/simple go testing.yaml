@@ -1,89 +1,89 @@
-name: Go CI Workflow
+# name: Go CI Workflow
 
-on:
-  push:
-    branches:
-      - main
-    paths:
-      - .github/workflows/simple go testing.yaml
-  pull_request:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+#     paths:
+#       - .github/workflows/simple go testing.yaml
+#   pull_request:
+#     branches:
+#       - main
 
-jobs:
-  # First stage: Build
-  build:
-    runs-on: ubuntu-latest
+# jobs:
+#   # First stage: Build
+#   build:
+#     runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
 
-    - name: Print current directory (for debugging)
-      run: pwd
+#     - name: Print current directory (for debugging)
+#       run: pwd
 
-    - name: List all files (for debugging)
-      run: ls -R
+#     - name: List all files (for debugging)
+#       run: ls -R
 
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.20'
+#     - name: Set up Go
+#       uses: actions/setup-go@v4
+#       with:
+#         go-version: '1.20'
 
-    - name: Cache Go modules
-      uses: actions/cache@v3
-      with:
-        path: ~/go/pkg/mod
-        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-        restore-keys: |
-          ${{ runner.os }}-go-
+#     - name: Cache Go modules
+#       uses: actions/cache@v3
+#       with:
+#         path: ~/go/pkg/mod
+#         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+#         restore-keys: |
+#           ${{ runner.os }}-go-
 
-    - name: Install dependencies (will fail if directory is wrong)
-      run: |
-        cd src/go-microservices  # Adjusting the path based on assumption
-        pwd  # Print the directory again for confirmation
-        ls   # List contents to ensure go.mod is present
-        go mod tidy
+#     - name: Install dependencies (will fail if directory is wrong)
+#       run: |
+#         cd src/go-microservices  # Adjusting the path based on assumption
+#         pwd  # Print the directory again for confirmation
+#         ls   # List contents to ensure go.mod is present
+#         go mod tidy
 
-    - name: Build Go project
-      run: |
-        cd src/go-microservices  # Adjust this path based on directory structure
-        go build -o ../../../bin/main
+#     - name: Build Go project
+#       run: |
+#         cd src/go-microservices  # Adjust this path based on directory structure
+#         go build -o ../../../bin/main
 
-  # Second stage: Test
-  test:
-    runs-on: ubuntu-latest
-    needs: build
+#   # Second stage: Test
+#   test:
+#     runs-on: ubuntu-latest
+#     needs: build
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
 
-    - name: Set up Go
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.20'
+#     - name: Set up Go
+#       uses: actions/setup-go@v4
+#       with:
+#         go-version: '1.20'
 
-    - name: Install dependencies
-      run: |
-        cd src/go-microservices  # Adjust this path based on directory structure
-        go mod tidy
+#     - name: Install dependencies
+#       run: |
+#         cd src/go-microservices  # Adjust this path based on directory structure
+#         go mod tidy
 
-    - name: Run tests
-      run: |
-        cd src/go-microservices  # Adjust this path based on directory structure
-        go test ./...
+#     - name: Run tests
+#       run: |
+#         cd src/go-microservices  # Adjust this path based on directory structure
+#         go test ./...
 
-  # Third stage: Status
-  status:
-    runs-on: ubuntu-latest
-    needs: test
+#   # Third stage: Status
+#   status:
+#     runs-on: ubuntu-latest
+#     needs: test
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+#     steps:
+#     - name: Checkout code
+#       uses: actions/checkout@v3
 
-    - name: Display Go version and build status
-      run: |
-        go version
-        echo "Build and Test stages have passed!"
+#     - name: Display Go version and build status
+#       run: |
+#         go version
+#         echo "Build and Test stages have passed!"
