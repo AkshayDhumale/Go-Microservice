@@ -1,8 +1,18 @@
 coverage:
   status:
-    project: #add everything under here, more options at https://docs.codecov.com/docs/commit-status
+    project:
       default:
-        # basic
-        target: auto #default
+        target: auto
         threshold: 0%
-        base: auto 
+        base: auto
+    patch:
+      default:
+        target: auto
+        threshold: 0%
+        base: auto
+  notify:
+    after_n_builds: 1
+    wait_for_ci: true
+comment:
+  layout: "reach, diff, flags, files"
+  behavior: default
