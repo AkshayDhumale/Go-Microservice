@@ -1,0 +1,50 @@
+version: "2"
+
+linters:
+  enable:
+    - bodyclose
+    - canonicalheader
+    - containedctx
+    - contextcheck
+    - copyloopvar
+    - embeddedstructfieldcheck
+    - errcheck
+    - errchkjson
+    - errname
+    - exptostd
+    - fatcontext
+    - funcorder
+    - gocheckcompilerdirectives
+    - gochecknoglobals
+    - gochecknoinits
+    - govet
+    - iface
+    - importas
+    - ineffassign
+    - misspell
+    - musttag
+    - protogetter
+    - staticcheck
+    - unconvert
+    - unqueryvet
+    - usestdlibvars
+    - zerologlint
+
+  settings:
+    errcheck:
+      check-type-assertions: true
+      check-blank: true
+      disable-default-exclusions: false
+      exclude-functions:
+        - (*github.com/valyala/fasthttp.RequestCtx).WriteString
+        - (*os.File).Close
+      verbose: true
+
+    funcorder:
+      constructor: true
+      struct-method: false
+      alphabetical: false
+
+run:
+  timeout: 1m
+  tests: false
